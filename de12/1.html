@@ -1,39 +1,111 @@
 <!DOCTYPE html>
 <html lang="jp">
 <head>
-    <!-- ⑥↓タイトルを変えてみよう -->
     <title>第１回</title>
-    <!-- ⑤スタイルシートの設定をしよう -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- h1.htmlからある行をコピペしてくればOK -->
 </head>
+
 <body>
-    <h1>git＆html</h1>
-    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
-    <div>
-         <!-- ①↓に文字を書いてみよう -->
-Hello<br>
-デザイン演習<br>
-         <!-- ②↓に画像（imagesフォルダにあるtest.png）を挿入してみよう -->
-<img src="./images/testimage.png" width="30%"><br>
-<img src="./images/testimage.png" width="40%"><br>
-<img src="../images/0_XBlogo.png" width="10%"><br>
-<img src="./images/PXL_20250817_114440483.jpg" width="40%"><br>
-         <!-- ③↓に箇条書きをしてみよう -->
-<ol>
-    <li>あああああ</li>
-    <li>いいいいい</li>
-</ol>
-<ul>
-    <li>あああああ</li>
-    <li>いいいいい</li>
-</ul>
-         <!-- ④↓に外部リンクを作ってみよう -->
-<a href="../index.html">XBPトップページ</a><br>
-<a href="./index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br><br>
-    </div>
-<div class="video">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2UiL2HEteOc?si=xaSIyftQ3o34w9uB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h1>Git＆HTML</h1>
+<!--Git-->
+    <font size="4"><h2>Gitとは</h2></font>
+<div>
+    ソースコードや変更履歴を管理するために使われる<b>『分散型バージョン管理システム』</b><br>
+    ・ファイルのバージョンを管理できる<br>
+    →ソースコードが上書きされても簡単に元に戻せる<br>
+    →安心してソースコードの更新を行える<br><br>
+    
+    ソースコード以外にもデザインやテキストなども管理できる<br>
+    →開発者以外にもデザイナーやライターなど幅広く使われている<br><br>
+</div>
+    <h3>『分散型バージョン管理システム』</h3>
+<div>
+    まず<b>バージョン管理</b>とは何か<br>
+    ソフトウェア開発やプロジェクト管理において、ファイルやソースコードの変更履歴を管理すること<br><br>
+
+    それじゃあ<b>分散型</b>って何？<br>
+    <b>分散型</b>：各々がローカルなリポジトリを持っており、それぞれが独立して作業を行う<br>
+    　　　　→必要な場合に変更履歴を統合する<br><br>
+    
+    ⇔集中型：中央リポジトリにファイルの変更履歴が保存される<br>
+    　　　　　中央リポジトリから最新のファイルを取得、変更後に中央リポジトリに反映させる<br>
+
+</div>
+    <h3>Gitについてで知っておくべき用語</h3>
+<div>
+    <b>リポジトリ</b>：ファイルや変更履歴を保存する場所<br>
+    ローカルリポジトリ：ローカルにあるリポジトリ<br>
+    　　　　　　　　　　ユーザーがローカル環境でソースコードの編集などを行う<br>
+    リモートリポジトリ：ネットワーク上にあるリポジトリ<br>
+    　　　　　　　　　　他ユーザーとファイルや変更履歴の共有を行う<br><br>
+    
+    <b>コミット</b>：ファイルや変更履歴をリポジトリへ保存すること<br><br>
+    
+    <b>プッシュ</b>：コミットをローカルリポジトリからリモートリポジトリへ反映させること<br><br>
+    
+    <b>プル</b>：リモートリポジトリのコミットをローカルリポジトリへ反映させること<br><br>
+    
+    <b>クローン</b>：リモートリポジトリのコミットをローカルリポジトリへコピーすること<br>
+    ※プルとの違い：プルでは差分のみコピーするのに対し、クローンでは丸ごとコピーする<br><br>
+    
+    <b>ブランチ</b>：同一リポジトリ内で変更履歴を分岐させること<br>
+    　　　　　分岐したブランチの変更を反映しても、メインのブランチには影響しない<br><br>
+
+    <b>マージ</b>：作成したブランチをメインのブランチへ統合すること<br><br>
+</div>
+
+<!--HTML-->
+    <font size="4"><h2>HTMLとは</h2></font>
+<div>
+    <b>ハイパーテキスト・マークアップ・ランゲージ（Hyper Text Markup Language）</b>の略<br>
+    Webページを作成するためにつくられた言語で、大元の構造や基本的な情報を構成する役割を担っている<br>
+</div>
+    <h3>基本用語</h3>
+<div>
+    <b>タグ</b>：HTMLの記述に意味を与える印<br>
+    　　　タグによってコンピュータはテキスト情報を表示する形式が理解できるようになる<br>
+</div>
+<div>
+    <b>代表的なタグ</b><br>
+    〈h1〉〜〈h6〉見出し（数字が小さいほど大きい見出しになる）<br>
+    〈p〉段落、通常のテキスト<br>
+    〈br〉改行<br>
+    〈img〉画像を挿入<br>
+    〈a〉リンクを挿入<br>
+    〈div〉グループ化（コンテンツをまとめる）<br>
+    〈strong〉太文字<br>
+    〈u〉アンダーライン<br>
+    〈b〉太字<br>
+    〈li〉箇条書き<br>
+    タグの最後には〈/h1〉のように「/」を入れる<br><br>
+</div>
+<div>
+    <b>要素</b>：Webページを構成するテキスト情報のかたまり<br>
+    　　　例えば「head」や「body」があげられる<br><br>
+
+    <b>属性</b>：個々のタグに特定の性質や動作を与える<br>
+    　　　→補足情報を与える<br><br>
+</div>
+
+<!--参考-->
+    <font size="4"><h2>参考サイト一覧</h2></font>
+    <h3>Gitとは</h3>
+<div>
+    <a href="https://www.kagoya.jp/howto/it-glossary/develop/git/">【入門】Gitとは？できることや使い方、GitHubとの違いをわかりやすく解説</a><br>
+    <a href="https://ninjacode.work/magazine/programming/git1/">Gitとは何か？初心者向けに基本概念からわかりやすく解説します</a><br>
+</div>
+    <h3>HTMLとは</h3>
+<div>
+    <a href="https://schoo.jp/matome/article/1635">HTMLとは？初心者向けに基礎知識を分かりやすく解説</a><br>
+    <a href="https://www.toyo-grp.co.jp/column/column-6371/">HTMLとは？基本や簡単なHTMLタグをわかりやすく解説</a><br>
+</div>
+    <h3>作成時に調べたやつ</h3>
+<div>
+    <ul>
+        <li>フォントサイズの変更</li>
+    <a href="https://web-camp.io/magazine/archives/156354/">HTMLで文字サイズ・フォントサイズを指定する方法【サンプルコード付き】</a><br>
+        <li>font-familyとは</li>
+    <a href="https://web-camp.io/magazine/archives/94242/">HTMLでfont-familyの指定・利用できるフォントを紹介</a><br>
 </div>
 
 </body>
