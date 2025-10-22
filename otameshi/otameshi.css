@@ -187,3 +187,8 @@ footer {
 .dropdown:hover .dropdown-menu {
   display: block !important;
 }
+
+/*リンクの下線消すやつ*/
+a {
+  text-decoration: none;
+}
