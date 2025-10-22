@@ -9,13 +9,7 @@ html, body {
     margin-bottom: 40px;
 	background: #ffffffcc;
 }
-h1{
-    text-indent: 0em;
-}
-h2{
-    margin-left: 1em;
-    margin-top: 1em;
-}
+
 h3{
     margin-left: 2em;
 }
@@ -120,12 +114,17 @@ span.blackback{
 /* 🌸 コンテンツ */
 main {
   max-width: 900px;
-  margin: 7rem auto 4rem; /* footerの分下に余白を取る */
-  padding: 1.5rem;
+  margin: 2rem auto 4rem; /* footerの分下に余白を取る */
+  padding: 1rem;
   box-sizing: border-box;
 }
 
 section {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  padding-bottom: 0.3rem;
   margin-bottom: 3rem;
 }
 
