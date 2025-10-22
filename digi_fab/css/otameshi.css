@@ -117,24 +117,6 @@ span.blackback{
   border: none;
 }
 
-/* 🌸 コンテンツ */
-main {
-  max-width: 900px;
-  margin: 7rem auto 4rem; /* footerの分下に余白を取る */
-  padding: 1.5rem;
-  box-sizing: border-box;
-}
-
-section {
-  margin-bottom: 3rem;
-}
-
-h2 {
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-}
-
 /* 🎴 カードグリッド */
 .grid {
   display: grid;
