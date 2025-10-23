@@ -9,16 +9,22 @@ html, body {
     margin-bottom: 40px;
 	background: #ffffffcc;
 }
-h1{
-    text-indent: 0em;
+
+h1 {
+  padding-bottom: 0.3rem;
+  margin-bottom: 3rem;
 }
-h2{
-    margin-left: 1em;
-    margin-top: 1em;
+
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
 }
+
 h3{
-    margin-left: 2em;
+    margin-left: 0em;
 }
+
 div{
     margin-top: 1em;
     margin-left: 3em;
@@ -31,6 +37,19 @@ span.blackback{
     text-indent: 3em;
     background: #393939;
     color: #ffffffcc;
+}
+
+
+/* 🌸 コンテンツ */
+main {
+  max-width: 900px;
+  margin: 2rem auto 4rem; /* footerの分下に余白を取る */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+section {
+  margin-bottom: 3rem;
 }
 
 /* 🌟 固定ナビバー */
