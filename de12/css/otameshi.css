@@ -33,6 +33,13 @@ span.blackback{
     color: #ffffffcc;
 }
 
+main {
+  max-width: 900px;
+  margin: 2rem auto 4rem; /* footerの分下に余白を取る */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 /* 🌟 固定ナビバー */
 .navbar {
   position: fixed;
