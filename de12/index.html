@@ -1,35 +1,64 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>デザイン演習Ⅰ・Ⅱ</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./images/xbp.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>haru.s -デザイン演習Ⅰ・Ⅱ-</title>
+  <link rel="stylesheet" href="../css/otameshi.css">
 </head>
 <body>
-    <logotohome>
-    <a href="../index.html"><img src="./images/0_XBlogo.png" alt=""></a>
-    </logotohome>
+  <!--固定タブ-->
+  <header class="navbar">
+    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#works">ポートフォリオ一覧 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../de12/otameshi.de12.html">デザイン演習Ⅰ・Ⅱ</a></li>
+            <li><a href="../digi_fab/otameshi.digi_fab.html">デジタル<br>ファブリケーション</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#fails">まとめページ ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../digi_fab/fils.html">設計ファイル</a></li>
+            <li><a href="">参考サイト</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="../index.html">ホーム</a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+<!--本文-->
+  <main>
     <h1>デザイン演習Ⅰ・Ⅱ</h1>
-        <h2>HTMLに関すること</h2>
-        <ol>
-            <li><a href="./hp1.html" target="_blank">htmlの基礎知識</a></li>
-            <li><a href="./hp2.html" target="_blank">htmlのwork</a></li>
-            <li><a href="./test.html" target="_blank">テストページ</a></li>
-        </ol>
-        <h2>演習ノート一覧</h2>
-        <ul>
-            <li><a href="./1.html" >第１回 Git＆HTML</a></li>
-            <li><a href="./2.html" >第２回 路上観察</a></li>
-            <li><a href="./3.html" >第３回 定点観察と路上観察</a></li>
-        </ul>
+    <section id="works">
+      <h2>HTMLに関すること</h2>
+      <div class="grid">
+        <div class="card"><a href="./hp1.html"><h3>htmlの基礎知識</h3></a></div>
+        <div class="card"><a href="./hp2.html"><h3>htmlのwork</h3></a></div>
+        <div class="card"><a href="./test.html"><h3>テストページ</h3></a></div>
+      </div>
+    </section>
 
+    <section id="works">
+      <h2>演習ノート一覧</h2>
+      <div class="grid">
+        <div class="card"><a href="./1.html"><h3>第１回<br>Git＆HTML</h3></a></div>
+        <div class="card"><a href="./2.html"><h3>第２回<br>路上観察</h3></a></div>
+        <div class="card"><a href="./3.html"><h3>第３回<br>定点観察と路上観察</h3></a></div>
+      </div>
+    </section>
+  </main>
 
-
-    
-<br>
-<br>
-
-
+  <footer>
+    <p>&copy; 2025 haru.s</p>
+  </footer>
 </body>
 </html>
