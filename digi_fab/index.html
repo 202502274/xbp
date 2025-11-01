@@ -1,28 +1,54 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>デジタルファブリケーション</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="shortcut icon" href="./images/xbp.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>haru.s -デジタルファブリケーション-</title>
+  <link rel="stylesheet" href="../css/otameshi.css">
 </head>
 <body>
-    <logotohome>
-    <a href="../index.html"><img src="./images/0_XBlogo.png" alt=""></a>
-    </logotohome>
+  <!--固定タブ-->
+  <header class="navbar">
+    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#works">ポートフォリオ一覧 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
+            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#fails">まとめページ ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../digi_fab/fils.html">設計ファイル</a></li>
+            <li><a href="">参考サイト</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="../index.html">ホーム</a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--本文-->
+  <main>
     <h1>デジタルファブリケーション</h1>
-    <h2>演習ノート一覧</h2>
-    <ul>
-        <li><a href="./1.html" >第１回 3DPrinting</a></li>
-        <li><a href="" >第２回 Computer-Controlled Cutting</a></li>
-    </ul>
+    <section id="works">
+      <h2>演習ノート</h2>
+      <div class="grid">
+        <div class="card"><a href="./1.html" ><h3>第１回<br>3DPrinting</h3></a></div>
+        <div class="card"><a href="./2.html" ><h3>第２回<br>Computer-Controlled Cutting</h3></a></div>
+      </div>
+    </section>
+  </main>
 
-
-
-    
-<br>
-<br>
-
-
+  <footer>
+    <p>&copy; 2025 haru.s</p>
+  </footer>
 </body>
 </html>
