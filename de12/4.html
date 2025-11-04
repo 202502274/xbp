@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <title>haru.s -第４回-</title>
+    <link rel="stylesheet" href="./css/otameshi.css">
+</head>
+
+<body>
+  <!--固定タブ-->
+  <header class="navbar">
+    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#works">ポートフォリオ一覧 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
+            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#fails">まとめページ ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../digi_fab/files.html">設計ファイル</a></li>
+            <li><a href="">参考サイト</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="../index.html">ホーム</a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+<!--本文-->
+<main>
+    <h1>Python</h1>
+    <h2>『ダイスポーカー』</h2>
+
+    <section>
+        <!--説明-->
+        5つのサイコロを使い、ポーカーの役のような組み合わせを目指すゲーム<br>
+        ダイスを振り、3回の振り直し（各ダイス1回まで）の後、最も強い役が勝利<br> 
+    </section>
+
+    <h3>・コード</h3>
+
+    <section>
+        <pre><code>
+            <!--コード-->
+            import random
+            
+            import collections
+            
+            dice = [1, 2, 3, 4, 5, 6]
+            result = []
+            
+            for i in range(5):
+              result.append(random.choice(dice)) #append：出た目をリストに追加する
+              
+            print("出た目：", result)
+            
+            #--並べ替え--
+            result_list = sorted(result) 
+            
+            #--要素のカウント--
+            count_list = collections.Counter(result_list) 
+            #print(count_list)
+            
+            #--カウントの並び替え--
+            new_count_list = sorted(count_list.values(), reverse=True)
+            #print(new_count_list)
+            
+            #--役--
+            if new_count_list == [5]:
+              yaku = "ファイブカード"
+            elif new_count_list == [4, 1]:
+              yaku = "フォーカード"
+            elif new_count_list == [3, 2]:    
+              yaku = "フルハウス"
+            elif result_list == [1, 2, 3, 4, 5] or result_list == [2, 3, 4, 5, 6]:
+              yaku = "ストレート"
+            elif new_count_list == [3, 1, 1]:
+              yaku = "スリーカード"
+            elif new_count_list == [2, 2, 1]:
+              yaku = "ツーペア"
+            elif new_count_list == [2, 1, 1, 1]:
+              yaku = "ワンペア"
+            else:
+              yaku = "ハイカード"
+            print("役　　：", yaku)
+        </code></pre>
+    </section>
+
+    <section>
+      それぞれの要素を組み合わせて一つのコードとして成り立つようにするのが難しかった<br>
+      他にも、各ダイスでの振り直しを可能にしたり、複数人やCPUとの対戦が行えるようにしたいなど考えたが、現状では難しかった。<br>
+    </section>
+
+    <h3>参考サイト</h3>
+
+    <section>
+      <a href="https://note.nkmk.me/python-collections-counter/">PythonのCounterでリストの各要素の出現個数をカウント</a><br>
+      <a href="https://www.javadrive.jp/python/list/index11.html#section1">リストの要素を昇順または降順に並び替える</a><br>
+    </section>
+
+  </main>    
+
+    <footer>
+        <p>&copy; 2025 haru.s</p>
+    </footer>
+
+</body>
+</html>
