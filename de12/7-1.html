@@ -34,6 +34,24 @@
     </nav>
   </header>
 
+<style>
+  .local-area  a {
+    color: blue;
+  }
+  .local-area  a:visited {
+    color: #551A8B;
+  }
+
+  a {
+    color: rgb(121, 121, 121);
+  }
+  
+  a:visited {
+    color: rgb(121, 121, 121);
+  }
+
+</style>
+
 <!--本文-->
 <main>
     <h1>Polars</h1>
@@ -45,14 +63,15 @@
 
     <h3>・PDF資料</h3>
 
-    <section>
+    <div class="local-area">
       <a href="files/Polars_analysis.pdf">Polarsを利用した分析</a>
-    </section>
+    </div>
 
     <section>
+      <br>
       自分でどのデータを使って何を分析するのか考えるのが大変だった<br>
       「df_posの'datetime'」と「df_weatherの'date'」の数値が違ったせいで苦労した<br>
-      （頭のおかしい人力でどうにかしたものの、その後の計算で上手くいかなかった。<br>
+      （<a href="./7-2.html">頭のおかしい人力</a>でどうにかしたものの、その後の計算で上手くいかなかった。<br>
       　資料に使いはしたが、別に元のデータのままでも問題なかった気もしてる）
     </section>
 
