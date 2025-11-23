@@ -1,0 +1,19 @@
+ワンクリックコピーができる奴↓
+
+<div class="code-box">
+  <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+  <div class="copied-popup">Copy!!</div>
+  <pre><code>
+    <!--コード-->
+  </code></pre>
+</div>
+
+
+※2,3行目はクリックしたときに文字が出てくるようにするやつ
+
+
+また</body>の前に
+
+<script src="./JS/script.js"></script>
+
+を入れる
