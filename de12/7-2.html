@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <title>haru.s -第７回 裏-</title>
+    <link rel="stylesheet" href="./css/otameshi.css">
+</head>
+
+<body>
+  <!--固定タブ-->
+  <header class="navbar">
+    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#works">ポートフォリオ一覧 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
+            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#fails">まとめページ ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../digi_fab/files.html">設計ファイル</a></li>
+            <li><a href=""></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="../index.html">ホーム</a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+<!--本文-->
+<main>
+    <h1>Polars</h1>
+    <h2>『頭のおかしい人力コード』</h2>
+    
+    <br>
+
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+       <div class="copied-popup">Copy!!</div>
+       <pre><code>
+        <!--コード-->
+        (df_pos
+        .with_columns(
+              pl.when(pl.col('datetime').str.contains('2024/1/1')).then(pl.lit('2024-01-01'))
+                .when(pl.col('datetime').str.contains('2024/1/2')).then(pl.lit('2024-01-02'))
+                    ・
+                    ・
+                    ・
+                .when(pl.col('datetime').str.contains('2024/12/30')).then(pl.lit('2024-12-30'))
+                .when(pl.col('datetime').str.contains('2024/12/31')).then(pl.lit('2024-12-31'))
+              )
+        .join(df_weather
+              ,how='inner'
+              ,on='date')
+        .group_by('weather')
+        .agg(pl.col('amount').sum()
+        #    ,((pl.col("amount").sum()) / (pl.col("date").count())).alias("avg_amount")
+            )
+        )
+      </code></pre>
+    </div>
+
+    <section>
+      <div>
+        <br>
+        長すぎたので省略したが、366日分ある<br>
+        途中からはAIに書かせた、それでも大変<br>
+        「Pythonのコードでできたらいいな」などと考えていたが無理だった<br><br>
+
+        計算が上手くいかなかったのは下から3行目の所、数値は出るものの違う値が出てきた<br>
+        よって、上のコードで出てきた'amount'を下のコードで出た値で割って算出した<br>
+      </div>
+    </section>
+
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+       <div class="copied-popup">Copy!!</div>
+       <pre><code>
+        <!--コード-->
+        (df_weather
+        .group_by('weather')
+        .agg(pl.col('date').count())
+        )
+      </code></pre>
+    </div>
+
+    <section>
+      <div>
+        個別に値は出せるけどグラフを錬成するのができず結局PPTのほうでグラフを作った<br>
+        （一応、出力された表も載せたはず...）<br><br>
+
+        感想としては<br>
+        <b>　　　　　　50本ノックのようなパズルのほうが楽しい</b><br>
+        　　　　　　　　　　　　　　　　　　　　　　　　　という気持ち
+      </div>
+    </section>
+</main>    
+
+    <footer>
+        <p>&copy; 2025 haru.s</p>
+    </footer>
+<script src="./JS/script.js"></script>
+</body>
+</html>
