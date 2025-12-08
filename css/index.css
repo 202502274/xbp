@@ -18,7 +18,7 @@ h1 {
 h2 {
   border-bottom: 2px solid #ccc;
   padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 h3{
@@ -27,7 +27,7 @@ h3{
 
 div{
     margin-top: 1em;
-    margin-left: 3em;
+    margin-left: 1em;
     margin-bottom: 1em;
 }
 p{
@@ -141,18 +141,18 @@ section {
 .grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 250px);
 }
 
 .card {
+  width: 220px;
+  height: 160px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* 枠から画像がはみ出さないように */
   transition: 0.3s;
 }
 
@@ -161,13 +161,6 @@ section {
   font-size: 1.2rem;
   color: #0a9396;
   text-align: center;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 枠いっぱいに収まるようにトリミング */
-  border-radius: 12px; /* 枠と同じ丸みを画像にも */
 }
 
 /* ホバーで少し浮く */
