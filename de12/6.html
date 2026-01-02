@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <title>haru.s -第６回-</title>
+    <link rel="stylesheet" href="./css/otameshi.css">
+</head>
+
+<body>
+  <!--固定タブ-->
+  <header class="navbar">
+    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#works">ポートフォリオ一覧 ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
+            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#fails">まとめページ ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="../digi_fab/files.html">設計ファイル</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="../index.html">ホーム</a>
+          <ul class="dropdown-menu">
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+<!--本文-->
+<main>
+    <h1>Python -API-</h1>
+    <h2>『メール返信作成ツール』</h2>
+
+    <section>
+      <!--説明-->
+      目上の人に対してのメール、チャットの返信文作成を行ってくれる
+    </section>
+
+
+    <h3>・コード</h3>
+
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      <div class="copied-popup">Copy!!</div>
+      <pre><code>
+      <!--コード-->
+      from openai import OpenAI
+      from dotenv import load_dotenv
+      import os
+      #API
+      client = OpenAI(api_key)
+
+      def get_greeting(to, medium, role):
+
+      """
+      medium: "メール" または "チャット"
+      role: "上司" / "個人名" など
+      """
+
+      # パターン分岐
+    
+      if medium == "メール":
+          greeting = "お世話になっております。"
+      elif medium == "チャット" and role == "上司":
+          greeting = "お疲れ様です"
+      elif medium == "チャット":
+          greeting = "お世話になっております"
+      else:
+          greeting = "お世話になっております。"
+
+      # 名前に様を付けるか調整
+      if "様" not in to and not (role == "個人名"):
+          to_formatted = f"{to} 様"
+      else:
+          to_formatted = to
+
+      return f"{to_formatted} {greeting}\n\n"
+    
+      #細かい指示
+      def generate_reply_ai(to, tone, medium, situation, details):
+          prompt = f"""
+          上司等へのメール、チャット返信文を書いてほしいです。
+          次の条件に基づいて、自然で相手に失礼のない返信文を作成してください。
+
+          【条件】
+          - 宛先: {to}
+          - 文体: {tone}
+          - 送信方法: {medium}
+          - 状況: {situation}
+          - 詳細内容: {details}
+
+          【出力形式】
+          - 件名（メールの場合のみ）
+          - 本文
+
+          【その他】
+          メールの場合「お疲れ様です、お世話になっております」の次は一行開けること
+          媒体問わず一文ごとに改行すること、一行は開けなくて良い
+          状況「確認」：メールを確認しました。という意味合いで作成してください
+          文末は基本的に「以上、よろしくお願いします。」とすること
+          """
+
+      response = client.chat.completions.create(
+          model="gpt-4o-mini",
+          messages=[{"role": "user", "content": prompt}],
+          temperature=0.7,
+      )
+
+      return response.choices[0].message.content.strip()
+
+      # --- 実行部分 ---
+      if __name__ == "__main__":
+          print("自動返信文AIジェネレーター")
+          print("------------------------------")
+
+          to = input("送信先（例：個人名、上司、同僚など）：")
+          tone = input("文体（丁寧／カジュアル／ビジネス）：")
+          medium = input("媒体（メール／チャット）：")
+          situation = input("状況（お礼／謝罪／確認／返信遅れ／その他）：")
+          details = input("詳細内容（返信で伝えたいことを自由に入力してください）：")
+
+          print("\n生成中...\n")
+          reply = generate_reply_ai(to, tone, medium, situation, details)
+
+          print("--- 生成された返信文 ---\n")
+          print(reply)
+        </code></pre>
+      </div>
+
+    <section>
+      簡単な条件を入れたらそこからAIが文章を生成する仕組み。<br>
+      一部のテンプレートは自分で考えたのを入れたかったため、if文を使った。<br>
+      「"""」を使うとAIに対して指示が出せるので自分のイメージに近づくように文章を入れた。<br>
+      ただAIなので想像していた文章が出力されないことも多かった。<br>
+      もう少し分岐やテンプレートを作ってから、生成の自由度を出すためにAIを組み込む形にできたらいいなと思った。<br>
+    </section>
+
+  </main>    
+
+    <footer>
+        <p>&copy; 2025 haru.s</p>
+    </footer>
+<script src="./JS/script.js"></script>
+</body>
+</html>
