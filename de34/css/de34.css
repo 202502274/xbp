@@ -182,10 +182,13 @@ h2 {
    カード
 ========================= */
 .card {
+  width: 430px;
+  height: 88px;
+
   display: block;
   padding: 20px;
   text-decoration: none;
-  color: #333;
+  color: #000000;
 
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.1);
