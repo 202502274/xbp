@@ -181,7 +181,8 @@ h2 {
    カード
 ========================= */
 .card {
-  width: 430px;
+  width: 100%;
+  max-width: 430px;
   height: 88px;
 
   display: block;
@@ -239,8 +240,6 @@ h2 {
   /* グリッド */
   .grid {
     grid-template-columns: 1fr; /* 1列 */
-    gap: 20px;
-    padding: 0;
   }
 
   /* カード */
