@@ -10,6 +10,17 @@ body {
   line-height: 1.8;
 }
 
+h2 {
+  margin-top: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 25px;
+
+  border-bottom: 2px solid #8d1342;
+  padding-bottom: 0.3rem;
+
+}
+
 /* =========================
    原稿用紙エリア
 ========================= */
@@ -20,7 +31,8 @@ body {
 
   min-height: 84vh;
 
-  background-color: hsl(30, 77%, 95%);
+  background: #fdf3e6;
+  opacity: 0.6;
 
   padding: 40px;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
@@ -187,7 +199,7 @@ body {
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.card h2 {
+.card h3 {
   margin-top: 0;
   font-size: 18px;
 }
