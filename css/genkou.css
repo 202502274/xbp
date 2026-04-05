@@ -31,9 +31,8 @@ h2 {
 
   min-height: 84vh;
 
-  background: #fdf3e6;
-  opacity: 0.6;
-
+  background: #fdf3e699;
+  
   padding: 40px;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
   border-radius: 6px;
