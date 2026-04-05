@@ -1,4 +1,4 @@
-/* 🌈 全体設定 */
+/* 全体設定 */
 html, body {
 	font-size: 16px;
 	font-family: sans-serif;
@@ -40,7 +40,7 @@ span.blackback{
 }
 
 
-/* 🌸 コンテンツ */
+/* コンテンツ */
 main {
   max-width: 900px;
   margin: 2rem auto 4rem; /* footerの分下に余白を取る */
@@ -53,7 +53,7 @@ section {
   margin-left: 2rem;
 }
 
-/* 🌟 固定ナビバー */
+/* 固定ナビバー */
 .navbar {
   position: fixed;
   top: 0;
@@ -97,7 +97,7 @@ section {
 }
 
 
-/* 📂 ドロップダウンメニュー */
+/* ドロップダウンメニュー */
 .dropdown {
   position: relative;
 }
@@ -137,7 +137,7 @@ section {
   border: none;
 }
 
-/* 🎴 カードグリッド */
+/* カードグリッド */
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -184,7 +184,7 @@ footer {
   z-index: 50;
 }
 
-/* 📱 スマホ対応 */
+/* スマホ対応 */
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
