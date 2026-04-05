@@ -182,7 +182,9 @@ h2 {
    カード
 ========================= */
 .card {
-  width: 430px;
+  width: 100%;
+  max-width: 430px;
+  min-width: 150px;
   height: 88px;
 
   display: block;
