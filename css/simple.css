@@ -1,4 +1,4 @@
-/* 🌈 全体設定 */
+/* 全体設定 */
 html, body {
 	font-size: 16px;
 	font-family: sans-serif;
@@ -39,8 +39,13 @@ span.blackback{
     color: #ffffffcc;
 }
 
+/*リンクの下線消すやつ*/
+a {
+  text-decoration: none;
+}
 
-/* 🌸 コンテンツ */
+
+/* コンテンツ */
 main {
   max-width: 900px;
   margin: 2rem auto 4rem; /* footerの分下に余白を取る */
@@ -53,7 +58,8 @@ section {
   margin-left: 2rem;
 }
 
-/* 🌟 固定ナビバー */
+
+/* 固定ナビバー */
 .navbar {
   position: fixed;
   top: 0;
@@ -87,17 +93,16 @@ section {
 
 .navbar a {
   text-decoration: none;
-  color: #0077b6;
+  color: #005f73;
   font-weight: 500;
   position: relative;
 }
 
 .navbar a:hover {
-  border-bottom: 2px solid #0077b6;
+  border-bottom: 2px solid #005f73;
 }
 
-
-/* 📂 ドロップダウンメニュー */
+/* ドロップダウンメニュー */
 .dropdown {
   position: relative;
 }
@@ -137,7 +142,17 @@ section {
   border: none;
 }
 
-/* 🎴 カードグリッド */
+/* --- 確実にドロップダウンを制御する最終設定 --- */
+.dropdown-menu {
+  display: none !important;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block !important;
+}
+
+
+/* カードグリッド */
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -168,6 +183,15 @@ section {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* 画像 */
+.img-card img{
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+
 /* フッター */
 footer {
   position: fixed;
@@ -184,7 +208,8 @@ footer {
   z-index: 50;
 }
 
-/* 📱 スマホ対応 */
+
+/* スマホ対応 */
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
@@ -206,6 +231,7 @@ footer {
     margin-top: 8rem;
   }
 }
+
 
 /*コードコピー用のやつ*/
 .code-box {
@@ -252,18 +278,4 @@ footer {
 .copied-popup.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* --- 確実にドロップダウンを制御する最終設定 --- */
-.dropdown-menu {
-  display: none !important;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block !important;
-}
-
-/*リンクの下線消すやつ*/
-a {
-  text-decoration: none;
 }
