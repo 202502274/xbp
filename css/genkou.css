@@ -11,36 +11,29 @@ body {
 }
 
 h2 {
-  margin-top: 40px;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 25px;
-
+  margin: 40px 10px 25px;
   border-bottom: 2px solid #8d1342;
   padding-bottom: 0.3rem;
-
 }
 
 /* =========================
    原稿用紙エリア
 ========================= */
 .page {
-  width: min(1500px, 90%);
-  margin: 40px 0;
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto;
   position: relative;
-
   min-height: 84vh;
 
   background: #fdf3e699;
-  
-  padding: 40px;
+
+  padding: clamp(20px, 4vw, 40px);
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
   border-radius: 6px;
 }
 
-/* =========================
-   内枠（二重線）
-========================= */
+/* 内枠 */
 .page::before {
   content: "";
   position: absolute;
@@ -48,20 +41,15 @@ h2 {
   left: 20px;
   right: 20px;
   bottom: 20px;
-
   border: 2px double rgba(0,0,0,0.2);
-
   pointer-events: none;
   z-index: 1;
 }
 
-/* =========================
-   内側の方眼（枠の中だけ）
-========================= */
+/* 方眼 */
 .page::after {
   content: "";
   position: absolute;
-
   top: 25px;
   left: 25px;
   right: 25px;
@@ -78,7 +66,7 @@ h2 {
 }
 
 /* =========================
-   ナビ全体
+   ナビ
 ========================= */
 .nav {
   position: sticky;
@@ -88,8 +76,9 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 
-  padding: 15px 30px;
+  padding: 15px 20px;
   margin-bottom: 30px;
 
   background: rgba(255,255,255,0.7);
@@ -97,21 +86,19 @@ h2 {
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
-/* タイトル */
 .nav h1 {
   margin: 0;
   font-size: 18px;
   letter-spacing: 0.1em;
 }
 
-/* ★ 横並び（最重要） */
 .nav nav {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* リンク */
 .nav a {
   text-decoration: none;
   color: #333;
@@ -130,7 +117,6 @@ h2 {
   position: relative;
 }
 
-/* メニュー */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -150,49 +136,50 @@ h2 {
   z-index: 2000;
 }
 
-/* 表示 */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* 中のリンク */
 .dropdown-menu a {
   display: block;
   padding: 8px 15px;
 }
 
-/* ホバー */
 .dropdown-menu a:hover {
   background: rgba(0,0,0,0.05);
 }
 
-
 /* =========================
-   グリッド
+   グリッド（安定版）
 ========================= */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 30px;
-  padding: 0 10px; 
+  padding: 0 10px;
+
+  align-items: start; /* ← 重なり防止 */
 }
 
 /* =========================
-   カード
+   カード（完全対策）
 ========================= */
 .card {
   width: 100%;
-  max-width: 430px;
-  height: 88px;
+  height: auto;
+  min-width: 0; /* ← 超重要 */
 
   display: block;
-  padding: 20px;
-  text-decoration: none;
-  color: #000000;
+  padding: 16px;
 
-  background: #ffffff;
+  text-decoration: none;
+  color: #000;
+
+  background: #fff;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 10px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 
   transition: 0.3s;
 }
@@ -202,8 +189,19 @@ h2 {
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+/* 中身のはみ出し防止 */
+.card * {
+  min-width: 0;
+}
+
+/* テキスト折り返し */
+.card h3,
+.card p {
+  word-break: break-word;
+}
+
 .card h3 {
-  margin-top: 0;
+  margin: 0 0 5px;
   font-size: 18px;
 }
 
@@ -212,22 +210,15 @@ h2 {
   opacity: 0.7;
 }
 
-
+/* =========================
+   スマホ
+========================= */
 @media (max-width: 600px) {
-
-  /* 右の余白対策 */
-  .page {
-    width: 95%;
-    margin: 20px auto;
-    padding: 20px;
-  }
-
-  /* カードをスマホ用に小さく＆1列 */
   .grid {
     grid-template-columns: 1fr;
   }
 
   .card {
-    padding: 15px;
+    padding: 12px;
   }
 }
