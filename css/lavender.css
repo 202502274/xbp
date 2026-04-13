@@ -217,3 +217,61 @@ main {
     flex-direction: column;
   }
 }
+
+/* ===== スマホ：スライドメニュー化 ===== */
+@media (max-width: 768px) {
+
+  /* メニューを横から出す */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -260px; /* 最初は隠す */
+
+    width: 260px;
+    height: 100vh;
+
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 80px;
+
+    transition: right 0.3s ease;
+
+    box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+    z-index: 1001;
+  }
+
+  /* 開いた状態 */
+  .nav-menu.active {
+    right: 0;
+  }
+
+  /* メニュー項目 */
+  .nav-menu li {
+    padding: 12px 20px;
+  }
+
+  .nav-menu > li {
+    margin-left: 0;
+  }
+
+  /* サブメニュー（アコーディオン） */
+  .dropdown {
+    display: none;
+    position: static;
+    border: none;
+    box-shadow: none;
+    padding-left: 10px;
+  }
+
+  .dropdown.active {
+    display: block;
+  }
+
+  /* クリック感 */
+  .has-sub > span {
+    cursor: pointer;
+  }
+}
