@@ -4,68 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>haru.s -home-</title>
-  <link rel="stylesheet" href="./css/genkou.css">
+  <link rel="stylesheet" href="./css/lavender.css">
 </head>
 
 <body>
-  <div class="page">
 
-<!-- ===== ナビ ===== -->
-    <header class="nav">
-      <h1>haru.s-ポートフォリオ-</h1>
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">haru.s-ポートフォリオ-</div>
 
-      <nav>
-        <div class="dropdown">
-          <a href="#">デザイン演習</a>
-          <ul class="dropdown-menu">
-            <li><a href="./de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
-            <li><a href="./de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
-            <li><a href="#">デザイン演習Ⅴ,Ⅵ</a></li>
-          </ul>
-        </div>
+    <ul class="nav-menu">
+      <li>
+        <a href="#" >デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="./de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="./de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="./de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
 
-        <div class="dropdown">
-        <a href="#">その他</a>
-          <ul class="dropdown-menu">
-            <li><a href="./digi_fab/index.html">デジタルファブリケーション</a></li>
-          </ul>
-        </div>
+      <li>
+        <a href="#" >その他</a>
+        <ul class="dropdown">
+          <li><a href="./digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
 
-        <a href="./index.html">ホーム</a>
-      </nav>
-    </header>
+      <li><a href="./index.html" class="active">ホーム</a></li>
+    </ul>
+  </div>
+</header>
 
-<!-- ===== 本文 ===== -->
-    <h2>デザイン演習</h2>
-    <!-- ===== カード ===== -->
-    <main class="grid">
-      <a class="card" href="./de12/index.html" target="_blank">
-        <h3>デザイン演習Ⅰ,Ⅱ</h3>
-        <p>—— デザイン作品</p>
-      </a>
+<main>
+  <h1>デザイン演習</h1>
 
-      <a class="card" href="./de34/index.html" target="_blank">
-        <h3>デザイン演習Ⅲ,Ⅳ</h3>
-        <p>—— デザイン作品</p>
-      </a>
+  <ul class="link-list">
+        <li>
+            <a href="./de12/index.html" target="_blank">
+                <span class="title">デザイン演習Ⅰ,Ⅱ</span>
+                <span class="desc">―― あいうえお</span>
+            </a>
+        </li>
 
-      <a class="card" href="" target="_blank">
-        <h3>デザイン演習Ⅴ,Ⅵ</h3>
-        <p>—— デザイン作品</p>
-      </a>
-    </main>
+        <li>
+            <a href="./de34/index.html" target="_blank">
+                <span class="title">デザイン演習Ⅲ,Ⅳ</span>
+                <span class="desc">―― かきくけこ</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="./de56/index.html" target="_blank">
+                <span class="title">デザイン演習Ⅴ</span>
+                <span class="desc">―― nodata</span>
+            </a>
+        </li>
+    </ul>
 
     <br>
 
-    <h2>その他</h2>
-    <!-- ===== カード ===== -->
-    <main class="grid">
-      <a class="card" href="./digi_fab/index.html" target="_blank">
-        <h3>デジタルファブリケーション</h3>
-        <p>—— デザイン作品</p>
-      </a>
-    </main>
+    <h1>その他</h1>
+    <ul class="link-list">
+        <li>
+            <a href="./digi_fab/index.html">
+                <span class="title">デジタルファブリケーション</span>
+                <span class="desc">―― さしすせそ</span>
+            </a>
+        </li>
+    </ul>
 
-  </div>
+
+</main>
+
 </body>
 </html>

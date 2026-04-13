@@ -1,0 +1,171 @@
+/* ===== リセット ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 全体 ===== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f7f6fc;
+  color: #4b4b5a;
+  line-height: 1.6;
+}
+
+/* ===== ナビバー ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid #e6e3f2;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5a4f7a;
+}
+
+/* ===== メニュー ===== */
+.nav-menu {
+  list-style: none;
+  display: flex;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu > li {
+  margin-left: 20px;
+}
+
+.nav-menu a {
+  color: #5a4f7a;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  transition: 0.2s;
+}
+
+/* 現在ページ */
+.nav-menu a.active {
+  border-bottom: 2px solid #9b72ff;
+}
+
+/* ホバー */
+.nav-menu a:hover {
+  background: #f3efff;
+  border-radius: 5px;
+}
+
+/* ===== ドロップダウン ===== */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+
+  background: white;
+  min-width: 180px;
+
+  border: 1px solid #e6e3f2;
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.dropdown a {
+  padding: 10px;
+}
+
+.dropdown a:hover {
+  background: #f3efff;
+}
+
+/* 表示 */
+.nav-menu li:hover .dropdown {
+  display: block;
+}
+
+/* ===== メイン ===== */
+main {
+  max-width: 900px;
+  margin: 100px auto 40px;
+  padding: 30px;
+
+  background: white;
+  border-radius: 15px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ===== 見出し ===== */
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #4b4b5a;
+}
+
+/* ===== リスト ===== */
+.link-list {
+  list-style: none;
+}
+
+.link-list li {
+  padding: 16px 18px;
+  margin-bottom: 12px;
+
+  background: #faf8ff;
+  border-radius: 10px;
+
+  border-left: 4px solid #80288b;
+
+  transition: all 0.2s ease;
+}
+
+/* ホバー */
+.link-list li:hover {
+  background: #f3efff;
+  transform: translateX(4px);
+}
+
+/* ===== リンク ===== */
+.link-list a {
+  display: block;
+  text-decoration: none;
+  color: #4b4b5a;
+}
+
+/* ===== タイトル ===== */
+.link-list .title {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===== 説明文 ===== */
+.link-list .desc {
+  display: block;
+  font-size: 13px;
+  color: #7b7590;
+  margin-top: 4px;
+  line-height: 1.5;
+}
