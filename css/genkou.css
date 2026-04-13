@@ -182,8 +182,8 @@ h2 {
 ========================= */
 .card {
   width: 100%;
-  max-width: 430px;
-  height: 88px;
+  max-width: 312px;/* 初期430 */
+  height: 90px;
 
   display: block;
   padding: 20px;
