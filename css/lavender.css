@@ -123,6 +123,10 @@ h2 {
   background: #f3efff;
 }
 
+.dropdown li {
+  padding-left: 0;
+}
+
 /* 表示 */
 .nav-menu li:hover .dropdown {
   display: block;
