@@ -206,3 +206,14 @@ main {
     display: block;
   }
 }
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none !important;
+  }
+
+  .nav-menu.active {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
