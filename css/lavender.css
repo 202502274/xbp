@@ -133,6 +133,58 @@ main {
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
+/* ===== メインコンテンツ内のリスト（箇条書き）のデザイン ===== */
+main ul {
+  list-style: none; /* 点（●）を消す場合はこれ。残すなら消してOK */
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+main li {
+  font-size: 16px;
+  color: #4b4b5a; /* 文字色を body と合わせる */
+  margin-bottom: 8px; /* 項目ごとの行間をあける */
+  position: relative;
+}
+
+/*リストデザイン*/
+.link-list {
+  list-style: none;
+}
+
+.link-list li {
+  padding: 16px 18px;
+  margin-bottom: 12px;
+
+  background: #faf8ff;
+  border-radius: 10px;
+
+  border-left: 4px solid #9b72ff;
+
+  transition: all 0.2s ease;
+}
+/* マウスを乗せた時の変化を追加 */
+.link-list li:hover {
+  background: #f3efff; /* 背景色を少しだけ濃くする */
+  padding-left: 25px;  /* 文字が少し右にスライドする動き */
+  cursor: pointer;
+}
+
+/* リスト内のリンクが青文字にならないように調整 */
+.link-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* リスト全体をクリック可能にする */
+}
+
+.link-list .desc {
+  display: block;
+  font-size: 13px;
+  color: #7b7590;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
 /* ===== スマホ用レスポンシブ調整 ===== */
 
 /* チェックボックス本体は常に隠す */
