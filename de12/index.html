@@ -4,70 +4,161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>haru.s -デザイン演習Ⅰ・Ⅱ-</title>
-  <link rel="stylesheet" href="../css/index-simple.css">
+  <link rel="stylesheet" href="../css/blue.css">
 </head>
+
 <body>
-  <!--固定タブ-->
-  <header class="navbar">
-    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
-    <nav>
-      <ul>
-        <li class="dropdown">
-          <a href="#works">ポートフォリオ一覧 ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
-            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#fails">まとめページ ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="../digi_fab/files.html">設計ファイル</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="../index.html">ホーム</a>
-          <ul class="dropdown-menu">
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
+
+<!-- ナビバー -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">haru.s-ポートフォリオ-</p>
+
+    <input type="checkbox" id="menu-btn-check" class="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn">
+      <span></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#">デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="../de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="../de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="../de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">その他</a>
+        <ul class="dropdown">
+          <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../index.html" class="active">ホーム</a></li>
+    </ul>
+
+  </div>
+</header>
 
 <!--本文-->
-  <main>
-    <h1>デザイン演習Ⅰ・Ⅱ</h1>
-    <section id="works">
-      <h2>HTMLに関すること</h2>
-      <div class="grid">
-        <div class="card"><a href="./hp1.html" target="_blank"><h3>htmlの基礎知識</h3></a></div>
-        <div class="card"><a href="./hp2.html" target="_blank"><h3>htmlのwork</h3></a></div>
-        <div class="card"><a href="./test.html" target="_blank"><h3>テストページ</h3></a></div>
-      </div>
-    </section>
+<main>
+  <h1>デザイン演習Ⅰ・Ⅱ</h1>
 
-    <section id="works">
-      <h2>演習ノート一覧</h2>
-      <div class="grid">
-        <div class="card"><a href="./1.html" target="_blank"><h3>第１回<br>Git＆HTML</h3></a></div>
-        <div class="card"><a href="./2.html" target="_blank"><h3>第２回<br>路上観察</h3></a></div>
-        <div class="card"><a href="./4.html" target="_blank"><h3>第３,４回<br>定点観察と路上観察</h3></a></div>
-        <div class="card"><a href="./5.html" target="_blank"><h3>第５回<br>Python</h3></a></div>
-        <div class="card"><a href="./6.html" target="_blank"><h3>第６回<br>Python『API』</h3></a></div>
-        <div class="card">                                   <h3>第７回<br>Polars -N/A-</h3></a></div>
-        <div class="card"><a href="./8.html" target="_blank"><h3>第８回<br>Polars</h3></a></div>
-        <div class="card"><a href="./9.html" target="_blank"><h3>第９回<br>テキストマイニング</h3></a></div>
-        <div class="card"><a href="./10.html" target="_blank"><h3>第10回<br>インタビュー<br>事前準備</h3></a></div>
-        <div class="card">                                    <h3>第11回<br>インタビュー<br>実践 -N/A-</h3></a></div>
-        <div class="card"><a href="./12.html" target="_blank"><h3>第12回<br>インタビュー<br>まとめ</h3></a></div>
-        <div class="card">                                    <h3>第13回<br>講演</h3></a></div>
-        <div class="card"><a href="./14.html" target="_blank"><h3>第14回<br>インサイト</h3></a></div>
-      </div>
-    </section>
-  </main>
+  <h2>HTMLに関すること</h2><br>
+  <ul class="link-list">
+      <li>
+          <a href="./hp1.html" target="_blank">
+              <span class="title">htmlの基礎知識</span>
+              <span class="desc"></span>
+          </a>
+      </li>
 
-  <footer>
-    <p>&copy; 2025 haru.s</p>
-  </footer>
+      <li>
+          <a href="./hp2.html" target="_blank">
+              <span class="title">htmlのwork</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./test.html" target="_blank">
+              <span class="title">テストページ</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+  </ul>
+
+<br>
+
+  <h2>演習ノート一覧</h2><br>
+  <ul class="link-list">
+      <li>
+          <a href="./1.html" target="_blank">
+              <span class="title">第1回</span>
+              <span class="desc">――Git＆HTML</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./2.html" target="_blank">
+              <span class="title">第2回</span>
+              <span class="desc">――路上観察</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./4.html" target="_blank">
+              <span class="title">第3,4回</span>
+              <span class="desc">――定点観察と路上観察</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./5.html" target="_blank">
+              <span class="title">第5回</span>
+              <span class="desc">――Python</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./6.html" target="_blank">
+              <span class="title">第6回</span>
+              <span class="desc">――Python『API』</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./8.html" target="_blank">
+              <span class="title">第7,8回</span>
+              <span class="desc">――Polars</span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./9.html" target="_blank">
+              <span class="title">第9回</span>
+              <span class="desc">――テキストマイニング</span>
+          </a>
+      </li>
+      
+      <li>
+          <a href="./10.html" target="_blank">
+              <span class="title">第10回</span>
+              <span class="desc">――インタビュー,事前準備</span>
+          </a>
+      </li>
+
+      <li>
+        <span class="title">第11回</span>
+        <span class="desc">――インタビュー,実践</span>
+      </li>
+
+      <li>
+          <a href="./12.html" target="_blank">
+              <span class="title">第12回</span>
+              <span class="desc">――インタビュー,まとめ</span>
+          </a>
+      </li>
+
+      <li>
+        <span class="title">第13回</span>
+        <span class="desc">――講演</span>
+      </li>
+
+      <li>
+          <a href="./14.html" target="_blank">
+              <span class="title">第14回</span>
+              <span class="desc">――インサイト</span>
+          </a>
+      </li>
+  </ul>  
+</main>
+
+<footer>
+  <p>&copy; 2025 haru.s</p>
+</footer>
+
 </body>
 </html>

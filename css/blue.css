@@ -1,0 +1,348 @@
+/* ===== リセット ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 全体 ===== */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f6f8fc;
+  color: #4b4b5a;
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #4b4b5a;
+}
+
+h2 {
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #4b4b5a;
+
+  position: relative;
+  padding-left: 10px;
+  border-left: 4px solid #0a9396;
+}
+
+h3{
+    margin-left: 20px;
+}
+
+div{
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+}
+
+/* ===== ナビバー ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid #e6e3f2;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #005f73;
+}
+
+/* ===== メニュー（PC） ===== */
+.nav-menu {
+  list-style: none;
+  display: flex;
+}
+
+.nav-menu li {
+  position: relative;
+}
+
+.nav-menu > li {
+  margin-left: 20px;
+}
+
+.nav-menu a,
+.nav-menu span {
+  color: #005f73;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  transition: 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu span:hover {
+  background: #f6fafc;
+  border-radius: 5px;
+}
+
+.nav-menu a.active {
+  border-bottom: 2px solid #0077b6;
+}
+
+/* ===== ドロップダウン（PC hoverのみ） ===== */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+
+  background: white;
+  min-width: 180px;
+
+  border: 1px solid #e6e3f2;
+  border-radius: 8px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+  list-style: none;
+  overflow: hidden;
+}
+
+.dropdown a {
+  padding: 10px;
+}
+
+/* hoverで表示（PCのみ） */
+.nav-menu li:hover .dropdown {
+  display: block;
+}
+
+/* ===== メイン ===== */
+main {
+  max-width: 900px;
+  margin: 100px auto 40px;
+  padding: 30px;
+
+  background: white;
+  border-radius: 15px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* ===== メインコンテンツ内のリスト（箇条書き）のデザイン ===== */
+main ul {
+  list-style: none; /* 点（●）を消す場合はこれ。残すなら消してOK */
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+main li {
+  font-size: 16px;
+  color: #4b4b5a; /* 文字色を body と合わせる */
+  margin-bottom: 8px; /* 項目ごとの行間をあける */
+  position: relative;
+}
+
+/*リストデザイン*/
+.link-list {
+  list-style: none;
+}
+
+.link-list li {
+  padding: 16px 18px;
+  margin-bottom: 12px;
+
+  background: #f6f8fc;
+  border-radius: 10px;
+
+  border-left: 4px solid #0a9396;
+
+  transition: all 0.2s ease;
+}
+/* マウスを乗せた時の変化を追加 */
+.link-list li:hover {
+  background: #eff9ff; /* 背景色を少しだけ濃くする */
+  padding-left: 25px;  /* 文字が少し右にスライドする動き */
+  cursor: pointer;
+}
+
+/* リスト内のリンクが青文字にならないように調整 */
+.link-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* リスト全体をクリック可能にする */
+}
+
+.link-list .desc {
+  display: block;
+  font-size: 13px;
+  color: #758690;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 0.6rem 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
+/*コードコピー用のやつ*/
+.code-box {
+  position: relative;
+  background: #1e1e1e;
+  color: #cfcfcf;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.copy-btn:hover {
+  background: #555;
+}
+
+/* コピーしました の吹き出し */
+.copied-popup {
+  position: absolute;
+  right: 10px;
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(5px);
+}
+.copied-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== スマホ用レスポンシブ調整 ===== */
+
+/* チェックボックス本体は常に隠す */
+.menu-btn-check {
+  display: none;
+}
+
+/* スマホ用ハンバーガーアイコン（PCでは隠す） */
+.menu-btn {
+  display: none;
+  height: 60px;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  /* ハンバーガーアイコンを表示 */
+  .menu-btn {
+    display: flex;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #005f73; /* ロゴと同じ色 */
+    position: absolute;
+    transition: all .3s;
+  }
+  .menu-btn span:before { bottom: 8px; }
+  .menu-btn span:after { top: 8px; }
+
+  /* チェックが入った時に三本線を「X」にする */
+  .menu-btn-check:checked ~ .menu-btn span { background-color: rgba(255, 255, 255, 0); }
+  .menu-btn-check:checked ~ .menu-btn span::before { bottom: 0; transform: rotate(45deg); }
+  .menu-btn-check:checked ~ .menu-btn span::after { top: 0; transform: rotate(-45deg); }
+
+  /* メニューの縦並び設定 */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 最初は画面の外に隠す */
+    width: 80%; /* メニューの横幅 */
+    height: 100vh;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 80px 30px;
+    transition: all .4s;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.05);
+    z-index: 1050;
+    overflow-y: auto;
+  }
+
+  /* チェックが入ったらメニューをスライドイン */
+  .menu-btn-check:checked ~ .nav-menu {
+    right: 0;
+  }
+
+  .nav-menu > li {
+    margin: 15px 0;
+  }
+
+  /* アコーディオン部分（ドロップダウン）の調整 */
+  .dropdown {
+    display: block; /* スマホでは最初から表示、またはタップで展開 */
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: #f9f8ff;
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid #e6e3f2;
+  }
+  
+  /* メインコンテンツの余白調整（スマホ用） */
+  main {
+    margin-top: 80px;
+    padding: 20px;
+  }
+}
