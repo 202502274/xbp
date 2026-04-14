@@ -3,103 +3,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>haru.s -files-</title>
-  <link rel="stylesheet" href="../css/index-simple.css">
+  <title>haru.s -設計ファイル-</title>
+  <link rel="stylesheet" href="../css/blue.css">
 </head>
 
 <body>
-  <!--固定タブ-->
-  <header class="navbar">
-    <a href="../index.html"><h1>haru.s-ハル-のポートフォリオ</h1></a>
-    <nav>
-      <ul>
-        <li class="dropdown">
-          <a href="#works">ポートフォリオ一覧 ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="../de12/index.html">デザイン演習Ⅰ・Ⅱ</a></li>
-            <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#fails">まとめページ ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="../digi_fab/files.html">設計ファイル</a></li>
-            <!-- <li><a href=""></a></li> -->
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="../index.html">ホーム</a>
-          <ul class="dropdown-menu">
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
 
-  <style>
-  .local-area  a {
-    color: rgb(0, 0, 0);
-  }
-  .local-area  a:visited {
-    color: rgb(82, 47, 83);
-  }
-  </style>
+<!-- ナビバー -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">haru.s-ポートフォリオ-</p>
 
-  <!--本文-->
-  <main>
-    <h1>デジタルファブリケーション<br>設計ファイル一覧</h1>
-    <section id="works">
-      <h2 class="local-area"><a href="./1.html">第１回　『ピンセット』</a></h2>
-      <div class="grid">
-        <div class="card"><a href="./files/pinsetto/hontai2.stl" ><h3>本体パーツ（stl）</h3></a></div>
-        <div class="card"><a href="./files/pinsetto/sotogawa2.stl" ><h3>外側パーツ（stl）</h3></a></div>
-      </div>
-    </section>
+    <input type="checkbox" id="menu-btn-check" class="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn">
+      <span></span>
+    </label>
 
-    <section id="works">
-      <h2 class="local-area"><a href="./2.html">第２回　『木製スタンド＋α』</a></h2>
-      <div class="grid">
-        <div class="card"><a href="./files/re-za-kakou/ki.dxf"><h3>スタンド（dxf）</h3></a></div>
-        <div class="card"><a href="./files/re-za-kakou/kagakusiki.dxf"><h3>化学式（dxf）</h3></a></div>
-      </div>
-    </section>
+    <ul class="nav-menu">
+      <li>
+        <a href="#">デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="../de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="../de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="../de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
 
-    <section id="works">
-      <h2 class="local-area"><a href="./3.html">第４回　『ドアプレート』</a></h2>
-      <h3>　　レーザー加工</h3>
-      <div class="grid">
-        <div class="card"><a href="./files/doorplate/waku.ai"><h3>枠（ai）</h3></a></div>
-      </div>
-      <h3>　　UVプリント</h3>
-      <div class="grid">
-        <div class="card"><a href="./files/doorplate/waku.eps"><h3>枠（eps）</h3></a></div>
-        <div class="card"><a href="./files/doorplate/design.eps"><h3>デザイン（eps）</h3></a></div>
-      </div>
-    </section>
+      <li>
+        <a href="#">その他</a>
+        <ul class="dropdown">
+          <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
 
-    <section id="works">
-      <h2 class="local-area"><a href="./5.html">第５回　『栞』</a></h2>
-      <h3>試作品１（25*107*2.5mm）</h3>
-      <div class="grid">
-        <div class="card"><a href="./files/shiori/01/shiori.ai"><h3>栞（ai）</h3></a></div>
-        <div class="card"><a href="./files/shiori/01/waku.dxf"><h3>枠（dxf）</h3></a></div>
-        <div class="card"><a href="./files/shiori/01/design.dxf"><h3>彫刻（dxf）</h3></a></div>
-      </div>
-      <h3>試作品２（25*110*2.5mm）</h3>
-      <div class="grid">
-        <div class="card"><a href="./files/shiori/02/shiori.ai"><h3>栞（ai）</h3></a></div>
-        <div class="card"><a href="./files/shiori/02/waku.dxf"><h3>枠（dxf）</h3></a></div>
-        <div class="card"><a href="./files/shiori/02/design.dxf"><h3>彫刻（dxf）</h3></a></div>
-      </div>
-      <h3>試作品３（25*110*5mm）</h3>
-      <div class="grid">
-        <div class="card"><a href="./files/shiori/02/shiori.ai"><h3>栞（ai）</h3></a></div>
-        <div class="card"><a href="./files/shiori/02/waku.dxf"><h3>枠（dxf）</h3></a></div>
-        <div class="card"><a href="./files/shiori/02/design.dxf"><h3>彫刻（dxf）</h3></a></div>
-      </div>
-    </section>
+      <li><a href="../index.html" class="active">ホーム</a></li>
+    </ul>
 
-  </main>
+  </div>
+</header>
+
+<!--本文-->
+<main>
+  <h1>設計ファイル</h1>
+
+  <h2>ピンセット</h2><br>
+  <ul class="link-list">
+    <b>3Dプリンター</b>
+      <li>
+          <a href="./files/pinsetto/hontai2.stl">
+              <span class="title">本体パーツ（stl）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/pinsetto/sotogawa2.stl" target="_blank">
+              <span class="title">外側パーツ（stl）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+  </ul>
+
+<br>
+
+  <h2>木製スタンド＋α</h2><br>
+  <ul class="link-list">
+    <b>レーザーカット</b>
+      <li>
+          <a href="./files/re-za-kakou/ki.dxf">
+              <span class="title">スタンド（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/re-za-kakou/kagakusiki.dxf" target="_blank">
+              <span class="title">化学式（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+  </ul>
+
+<br>  
+
+  <h2>ドアプレート</h2><br>
+  <ul class="link-list">
+    <b>レーザーカット</b>
+      <li>
+          <a href="./files/doorplate/waku.ai">
+              <span class="title">枠（ai）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/doorplate/waku.eps" target="_blank">
+              <span class="title">枠（eps）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+    <b>UVプリンター</b>
+      <li>
+          <a href="./files/doorplate/design.eps" target="_blank">
+              <span class="title">デザイン（eps）</span>
+              <span class="desc"></span>
+          </a>
+      </li>      
+  </ul>
+
+<br>  
+
+  <h2>栞</h2><br>
+  <ul class="link-list">
+    <b>試作品1（25*107*2.5mm）</b>
+      <li>
+          <a href="./files/shiori/01/shiori.ai">
+              <span class="title">栞（ai）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/01/waku.dxf" target="_blank">
+              <span class="title">枠（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/01/design.dxf" target="_blank">
+              <span class="title">彫刻（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+<br>
+      
+    <b>試作品2（25*110*2.5mm）</b>
+      <li>
+          <a href="./files/shiori/02/shiori2.ai">
+              <span class="title">栞（ai）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/02/waku2.dxf" target="_blank">
+              <span class="title">枠（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/02/design2.dxf" target="_blank">
+              <span class="title">彫刻（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+<br>
+
+    <b>試作品3（25*110*5mm）</b>
+      <li>
+          <a href="./files/shiori/03/shiori3.ai">
+              <span class="title">栞（ai）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/03/waku3.dxf" target="_blank">
+              <span class="title">枠（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+
+      <li>
+          <a href="./files/shiori/03/design3.dxf" target="_blank">
+              <span class="title">彫刻（dxf）</span>
+              <span class="desc"></span>
+          </a>
+      </li>
+  </ul>  
+
+</main>
 
   <footer>
     <p>&copy; 2025 haru.s</p>

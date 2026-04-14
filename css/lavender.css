@@ -196,6 +196,21 @@ main li {
   line-height: 1.5;
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 0.6rem 0;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
 /*コードコピー用のやつ*/
 .code-box {
   position: relative;
