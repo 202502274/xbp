@@ -334,10 +334,10 @@ footer {
     position: static;
     box-shadow: none;
     border: none;
-    background: #f9f8ff;
+    background: #f6f8fc;
     margin-top: 10px;
     padding-left: 15px;
-    border-left: 2px solid #e6e3f2;
+    border-left: 2px solid #e3edf2;
   }
   
   /* メインコンテンツの余白調整（スマホ用） */
