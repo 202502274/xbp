@@ -1,0 +1,48 @@
+/*これをCSSに貼り付ける*/
+
+/*CSS:コードコピーの箱*/
+.code-box {
+  position: relative;
+  background: #1e1e1e;
+  color: #cfcfcf;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: Consolas, Monaco, 'Courier New', monospace;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.copy-btn:hover {
+  background: #555;
+}
+
+/* コピーしました の吹き出し */
+.copied-popup {
+  position: absolute;
+  right: 10px;
+  background: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(5px);
+}
+.copied-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
