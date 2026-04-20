@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>haru.s -No.2-</title>
+  <link rel="stylesheet" href="../css/lavender.css">
+</head>
+
+<body>
+
+<!-- ナビバー -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">haru.s -ポートフォリオ-</p>
+
+    <input type="checkbox" id="menu-btn-check" class="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn">
+      <span></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#">デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="../de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="../de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="../de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">その他</a>
+        <ul class="dropdown">
+          <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../index.html" class="active">ホーム</a></li>
+    </ul>
+
+  </div>
+</header>
+
+<!-- 本文 -->
+<main>
+  <h2>第2回　Arduino＋モーター</h2>
+
+  <h3>ステッピングモーター</h3>
+  <div>
+    一定の角度ずつ回転するモーター
+  </div>
+
+<br>
+
+  <h3>モーターを回転させる</h3>
+  <div>
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="copied-popup">Copy!!</div>
+          <pre><code>
+const int DIR  = 8;
+const int STEP = 9;
+
+void setup() {
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, LOW);
+}
+
+void loop() {
+
+  for (int i=0; i <= 50; i++){ //1.8°*50(i)
+    clockwise(5000); //5000=5秒
+  }
+  for (int i=0; i <= 50; i++){
+    counter_clockwise(5000);
+  }
+}
+
+void clockwise(int delaytime){
+  digitalWrite(DIR, HIGH);//HIGHは時計回り
+  digitalWrite(STEP, HIGH);
+  delayMicroseconds(delaytime);
+  digitalWrite(STEP, LOW);
+  delayMicroseconds(delaytime);
+}
+
+void counter_clockwise(int delaytime){
+  digitalWrite(DIR, LOW);//はLOWは反時計回り
+  digitalWrite(STEP, HIGH);
+  delayMicroseconds(delaytime);
+  digitalWrite(STEP, LOW);
+  delayMicroseconds(delaytime);
+}
+
+          </code></pre>
+        </div>
+    </div>
+  </div>
+
+<br>
+
+  <h3>センサーやモーターを使って何か作る</h3>
+  <div>
+    一定の暗さになる<br>
+    ↓<br>
+    LED(NeoPixel)の色がランダムにつく<br>
+    ↓<br>
+    色がそろったら点滅し、モーターが回る<br>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+	    <div class="copied-popup">Copy!!</div>
+        <pre><code>
+#include &lt;Adafruit_NeoPixel.h&gt;
+
+#define PIN         6    // NeoPixel
+#define NUMPIXELS   5    // LEDの数
+#define CDS_PIN     A1   // センサー
+#define MOTOR_PIN   3    // モーター
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+int order[NUMPIXELS];
+uint32_t colors[NUMPIXELS];
+uint32_t palette[5];
+
+void setup() {
+  Serial.begin(9600);
+
+  pixels.begin();
+  pixels.setBrightness(50);
+
+  pinMode(MOTOR_PIN, OUTPUT);
+  digitalWrite(MOTOR_PIN, LOW);
+
+  randomSeed(analogRead(0)); // ランダムの種を初期化
+
+  // 色
+  palette[0] = pixels.Color(255, 0, 0);   // 赤
+  palette[1] = pixels.Color(255, 255, 0); // 黄
+  palette[2] = pixels.Color(0, 255, 0);   // 緑
+  palette[3] = pixels.Color(0, 0, 255);   // 青
+  palette[4] = pixels.Color(255, 0, 255); // 紫
+}
+
+void loop() {
+  int val = analogRead(CDS_PIN);
+  Serial.print("Sensor Value: ");
+  Serial.println(val);
+
+  // 暗い時
+  if (val <= 200) {
+    pixels.clear();
+    pixels.show();
+    digitalWrite(MOTOR_PIN, LOW);
+    delay(500); 
+    return;
+  }
+
+  // 抽選
+  pixels.clear();
+
+  // 点灯させる順番
+  order[0] = 0;
+  order[1] = 4;
+  order[2] = 1;
+  order[3] = 3;
+  order[4] = 2;
+
+  // 当たり判定（30%）
+  bool isHit = (random(0, 100) < 30);
+
+  if (isHit) {
+    // 当たりの場合：ランダムに選んだ1色で全LEDを統一
+    uint32_t hitColor = palette[random(0, 5)];
+    for(int i = 0; i < NUMPIXELS; i++) {
+      colors[i] = hitColor;
+    }
+  } else {
+    // ハズレの場合：各LEDをバラバラの色にする
+    for(int i = 0; i < NUMPIXELS; i++) {
+      colors[i] = palette[random(0, 5)];
+    }
+  }
+
+  //1つずつ点灯
+  for(int i = 0; i < NUMPIXELS; i++) {
+    int ledIndex = order[i];
+    pixels.setPixelColor(ledIndex, colors[ledIndex]);
+    pixels.show();
+    delay(200);
+  }
+
+  //当たりの動作
+  if (isHit) {
+    Serial.println("--- HIT! ---");
+
+    //点滅
+    for(int k = 0; k < 3; k++) {
+      pixels.clear();
+      pixels.show();
+      delay(200);
+      for(int i = 0; i < NUMPIXELS; i++) {
+        pixels.setPixelColor(i, colors[i]);
+      }
+      pixels.show();
+      delay(200);
+    }
+
+    //モーター回転
+    pixels.clear();
+    pixels.show();
+    delay(100); 
+
+    Serial.println("Motor Rotating...");
+    digitalWrite(MOTOR_PIN, HIGH);
+    
+    //回転する時間
+     delay(500); 
+
+    digitalWrite(MOTOR_PIN, LOW);
+    Serial.println("Motor Stopped");
+
+    delay(2000); 
+
+  } else {
+    Serial.println("MISS...");
+    delay(1000);
+  }
+
+  pixels.clear();
+  pixels.show();
+  delay(300);
+}
+        </code></pre>
+    </div>
+  </div>
+  <div class="video">
+    URL
+  </div>
+  <div>
+    色がそろったら点滅までは上手くいったが、モーターが回転しないことが多々あった。<br>
+    それ以外は、想像した感じにできたので良かった。
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 haru.s</p>
+</footer>
+
+<script src="./js/code_copy.js"></script>
+</body>
+</html>
