@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>haru.s -No.3-</title>
+  <link rel="stylesheet" href="../css/lavender.css">
+</head>
+
+<body>
+
+<!-- ナビバー -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">haru.s -ポートフォリオ-</p>
+
+    <input type="checkbox" id="menu-btn-check" class="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn">
+      <span></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#">デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="../de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="../de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="../de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">その他</a>
+        <ul class="dropdown">
+          <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../index.html" class="active">ホーム</a></li>
+    </ul>
+
+  </div>
+</header>
+
+<!-- 本文 -->
+<main>
+  <h2>第3回　Flask</h2>
+
+  <h3>Flaskとは</h3>
+  <div>
+    Pythonで開発された軽量なWebアプリケーションの土台
+  </div>
+
+<br>
+
+  <h3>バックエンドとフロントエンド</h3>
+  <div>
+    <b>バックエンド</b><br>
+    →裏側の処理（Python）<br>
+    ・データを作る<br>
+    ・計算する<br>
+    ・APIとして返す<br>
+  </div>
+<br>
+  <div>
+    <b>フロントエンド</b><br>
+    →ユーザーが見る直接見る部分、UI（HTML/CSS/JS）<br>
+  </div>
+
+<br>
+
+  <h3>プログラム例</h3>
+  <div>
+    <b>0-9で奇数と偶数でそれぞれ別のテキストが表示される</b>
+  </div>
+  <div>    
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="copied-popup">Copy!!</div>
+        <pre><code>
+#python
+from flask import Flask, render_template, redirect,flash, url_for
+from csv import reader
+
+app = Flask(__name__)
+
+# ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+@app.route("/")
+def index():
+    return render_template("index.html", txt1="偶数です", txt2="奇数です")
+# ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+if __name__ == '__main__':
+    app.run()
+        </code></pre>
+    </div>
+  </div>
+
+<div>    
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="copied-popup">Copy!!</div>
+        <pre><code>
+#html
+
+&lt;h1>テスト&lt;/h1&gt;
+    &lt;div&gt;
+        {% for i in range(10) %}
+            {% if i % 2 == 0 %}
+                {{ txt1 }} --- {{ i }}&lt;br&gt;
+            {% else %}
+                {{ txt2 }} --- {{ i }}&lt;br&gt;
+            {% endif %}
+        {% endfor %}
+    &lt;/div&gt;
+        </code></pre>
+    </div>
+  </div>
+
+<br>
+
+  <div>
+    <b>Googleマップの座標へ飛べるやつ</b>
+  </div>
+  <div>    
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="copied-popup">Copy!!</div>
+        <pre><code>
+#python
+
+from flask import Flask, render_template, request, session,
+from csv import reader
+
+app = Flask(__name__)
+
+# ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+@app.route('/')
+def index():
+    #index.htmlがレンダリングされる
+    with open('./mmcsv.csv', 'r', encoding="utf-8") as csv_file:
+        csv_reader = reader(csv_file)
+        list_mm = list(csv_reader)
+
+    for data in list_mm:
+        data[3] = "https://www.google.com/maps?q=" + data[3].replace("(","").replace(")","").replace(" ","")
+
+    print(list_mm)
+    return render_template("index.html",mmlist=list_mm)
+
+# ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+if __name__ == '__main__':
+    app.run()
+        </code></pre>
+    </div>
+  </div>
+
+<div>    
+    <div class="code-box">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="copied-popup">Copy!!</div>
+        <pre><code>
+#html
+
+&lt;h1&gt;テスト&lt;/h1&gt;
+    &lt;div&gt;
+        {% for data in mmlist %}
+            {% if data[1]=="場所" %}
+                {{ data[1] }} &lt;br&gt;
+            {% else %}
+                &lt;a href={{ data[3] }} target="_blank"&gt;{{ data[1] }}&lt;/a&gt;&lt;br&gt;
+            {% endif%}
+        {% endfor %} 
+    &lt;/div&gt;
+        </code></pre>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 haru.s</p>
+</footer>
+
+<script src="./js/code_copy.js"></script>
+</body>
+</html>
