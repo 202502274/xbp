@@ -33,7 +33,14 @@ h2 {
 }
 
 h3{
-    margin-left: 20px;
+  margin-left: 20px;
+}
+
+h4{
+  margin-left: 20px;
+  position: relative;
+  padding-left: 10px;
+  border-left: 4px solid #288b42;
 }
 
 div{
@@ -101,7 +108,7 @@ div{
 }
 
 .nav-menu a.active {
-  border-bottom: 2px solid #72ffa6;
+  border-bottom: 2px solid #5cce52;
 }
 
 /* ===== ドロップダウン（PC hoverのみ） ===== */
