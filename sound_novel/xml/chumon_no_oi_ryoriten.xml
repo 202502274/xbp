@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<? xml version="1.0" encoding="utf-8" ?>
 <Playlist>
     <!-- 1ページ目で再生開始（2ページ目は設定がないのでそのまま流れる） -->
     <Track>
