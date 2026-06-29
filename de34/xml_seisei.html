@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>xmlファイル 作成</title>
+  <link rel="stylesheet" href="../css/lavender.css">
+  <!-- アプリのレイアウトを綺麗に保つための補助スタイル（必要に応じてlavender.cssの末尾に移動してもOKです） -->
+  <style>
+    .form-row { 
+        display: flex; 
+        gap: 15px; 
+        flex-wrap: wrap; 
+        align-items: flex-end; 
+    }
+    .form-group { 
+        display: flex; 
+        flex-direction: column; 
+        margin: 0; flex: 1; 
+        min-width: 120px; 
+    }
+    .form-group.widest { 
+        flex: 3; 
+        min-width: 250px; 
+    }
+    .form-group label {
+        font-size: 14px; 
+        font-weight: 500; 
+        margin-bottom: 5px; 
+        color: #5a4f7a; 
+    }
+    .form-control { 
+        padding: 10px 12px; 
+        font-size: 15px; 
+        border: 1px solid #e6e3f2; 
+        border-radius: 8px; color: #4b4b5a; 
+        background: #faf8ff; 
+        outline: none; 
+        transition: 0.2s; 
+    }
+    .form-control:focus {
+        border-color: #9b72ff; 
+        background: white; 
+        box-shadow: 0 0 0 3px rgba(155, 114, 255, 0.1); 
+    }
+    .btn-container { 
+        display: flex; 
+        gap: 15px; margin-top: 20px; 
+        margin-bottom: 20px; 
+    }
+    .btn { 
+        padding: 10px 24px; 
+        font-size: 15px; 
+        font-weight: 500; 
+        border-radius: 8px; 
+        cursor: pointer; 
+        border: none; 
+        transition: 0.2s; 
+    }
+    .btn-primary { 
+        background: #9b72ff; 
+        color: white; 
+    }
+    .btn-primary:hover { 
+        background: #80288b; 
+    }
+    .list-container { 
+        margin-top: 25px; 
+        max-height: 280px; 
+        overflow-y: auto; 
+        border-radius: 10px; 
+    }
+    .code-box { 
+        white-space: pre; 
+        padding-left: 20px; 
+        margin: 15px 30px; 
+    }
+    .copied-popup { 
+        top: 40px; 
+        z-index: 10; 
+    }
+  </style>
+</head>
+
+<body>
+<!-- ナビバー -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">haru.s -ポートフォリオ-</p>
+
+    <input type="checkbox" id="menu-btn-check" class="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn">
+      <span></span>
+    </label>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#">デザイン演習</a>
+        <ul class="dropdown">
+          <li><a href="../de12/index.html">デザイン演習Ⅰ,Ⅱ</a></li>
+          <li><a href="../de34/index.html">デザイン演習Ⅲ,Ⅳ</a></li>
+          <li><a href="../de56/index.html">デザイン演習Ⅴ</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">その他</a>
+        <ul class="dropdown">
+          <li><a href="../digi_fab/index.html">デジタル<br>ファブリケーション</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../index.html" class="active">ホーム</a></li>
+    </ul>
+
+  </div>
+</header>
+
+<main>
+  <h2>XML Playlist Creator</h2>
+    
+  <!-- ファイル名入力 -->
+  <div class="form-row">
+      <div class="form-group widest">
+          <label for="filename_entry">ファイル名</label>
+          <input type="text" id="filename_entry" class="form-control" value="playlist">
+      </div>
+  </div>
+
+  <!-- ページ・URL入力・追加ボタン -->
+  <div class="form-row" style="margin-top: 15px;">
+      <div class="form-group">
+          <label for="page_entry">ページ</label>
+          <input type="text" id="page_entry" class="form-control" placeholder="例: 1">
+      </div>
+      <div class="form-group widest">
+          <label for="url_entry">URL</label>
+          <input type="text" id="url_entry" class="form-control" placeholder="https://example.com">
+      </div>
+      <button type="button" id="add_button" class="btn btn-primary">追加</button>
+  </div>
+
+  <!-- トラック一覧（lavender.cssの.link-listスタイルを適用） -->
+  <div class="list-container">
+      <ul id="track_list" class="link-list">
+      </ul>
+  </div>
+
+  <!-- XML作成ボタン -->
+  <div class="btn-container">
+      <button type="button" id="create_button" class="btn btn-primary" style="flex: 1;">XMLファイルを作成</button>
+  </div>
+
+  <!-- XMLコードプレビュー ＆ コピー機能エリア -->
+  <div style="position: relative; margin-top: 30px;">
+      <h3 style="margin-left: 0; margin-bottom: 10px; font-size: 16px; color: #5a4f7a;">XML プレビュー</h3>
+      <div id="xml_preview_box" class="code-box">　　　　&lt;!-- トラックを追加するとここにXMLがリアルタイム生成されます --&gt;</div>
+      <button type="button" id="copy_button" class="copy-btn">コードをコピー</button>
+      <div id="copied_popup" class="copied-popup">コピーしました！</div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 haru.s</p>
+</footer>
+
+<!-- 外部JavaScriptファイルを読み込み -->
+<script src="./js/xml_sakusei.js"></script>
+</body>
+</html>
