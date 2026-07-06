@@ -30,7 +30,7 @@ pageEntry.addEventListener('input', (e) => {
 
 // XML文字列を生成
 function generateXmlString() {
-    let xml = '<?xml version="1.0" encoding="utf-8" ?>\n';
+    let xml = '<?xml version="1.0" encoding="utf-8"?>\n';
     xml += '<Playlist>\n';
 
     tracks.forEach(track => {
