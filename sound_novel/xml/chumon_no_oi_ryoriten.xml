@@ -5,11 +5,13 @@
         <Page>1</Page>
         <MusicPath>https://202502274.github.io/xbp/sound_novel/music/128_BPM124.mp3</MusicPath>
     </Track>
+
     <!-- 6ページ目に切り替わった瞬間にこの曲に変更 -->
     <Track>
         <Page>6</Page>
         <MusicPath>https://202502274.github.io/xbp/sound_novel/music/292_BPM102.mp3</MusicPath>
     </Track>
+    
     <!-- 10ページ目で再生開始-->
     <Track>
         <Page>10</Page>
