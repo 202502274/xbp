@@ -259,6 +259,53 @@ footer {
   transform: translateY(0);
 }
 
+/* 目次用　ナビバーに隠れないようにジャンプ位置を少し下にずらす */
+*[id] {
+  scroll-margin-top: 120px;
+}
+
+/* ===== ページトップへ戻るボタン ===== */
+.totop-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 60px; /* フッターより少し上に配置 */
+  z-index: 999; /* ナビバーのすぐ下のレイヤーに配置 */
+
+  width: 48px;
+  height: 48px;
+  background: #bcafdb;
+  color: #ffffff;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50%; 
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* マウスを乗せた（ホバー）時の動き */
+.totop-btn:hover {
+  background: #8a7bb6; /* リストの線と同じ明るい紫色に変化 */
+  transform: translateY(-4px); /* 少し上に浮き上がる */
+  box-shadow: 0 6px 16px rgba(155, 114, 255, 0.3);
+}
+
+/* スマホ表示時の位置微調整 */
+@media (max-width: 768px) {
+  .totop-btn {
+    right: 16px;
+    bottom: 70px; /* スマホはフッターの高さに合わせて位置を少し上げる */
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
 /* ===== スマホ用レスポンシブ調整 ===== */
 
 /* チェックボックス本体は常に隠す */
