@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>グッズ管理アプリ - カレンダー</title>
+    <link rel="stylesheet" href="goods.css">
+    <style>
+        /* ===== Googleカレンダー風スタイル ===== */
+        .calendar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e3f2e8;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            background: #e3f2e8;
+            border: 1px solid #e3f2e8;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .weekday-label {
+            background: #f8fff9;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: #4f7a60;
+            border-bottom: 1px solid #e3f2e8;
+        }
+        .calendar-day {
+            background: white;
+            min-height: 95px;
+            padding: 6px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.15s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .calendar-day:hover {
+            background: #f0fdf4;
+        }
+        .calendar-day.empty {
+            background: #fafafa;
+            cursor: default;
+        }
+        .day-number {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #4b5a4c;
+            margin-bottom: 4px;
+        }
+        .calendar-day.today {
+            background: #effff5;
+            border: 2px solid #6cbc58;
+        }
+        .event-badge {
+            background: #288b42;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 6px;
+            border-radius: 4px;
+            margin-top: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: bold;
+            text-align: center;
+        }
+        .nav-btn {
+            width: auto;
+            padding: 6px 15px;
+            font-size: 0.85rem;
+        }
+        .details-box {
+            max-width: 800px;
+            margin: 25px auto 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== ナビバー ===== -->
+<header class="navbar">
+  <div class="nav-container">
+    <p class="logo">🎁 グッズ管理アプリ</p>
+    <ul class="nav-menu">
+      <li><a href="goods.html">グッズ管理画面に戻る</a></li>
+      <li><a href="#" class="active">カレンダー</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ===== メインコンテンツ ===== -->
+<main>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button class="nav-btn" onclick="moveMonth(-1)">◀ 前月</button>
+            <h2 id="calendar-title" style="margin:0; border:none; padding:0;">2026年 --月</h2>
+            <button class="nav-btn" onclick="moveMonth(1)">次月 ▶</button>
+        </div>
+        <div class="calendar-grid" id="calendar-grid-board"></div>
+    </div>
+
+    <!-- カレンダー下部：グッズ内容表示エリア -->
+    <div class="box details-box" id="calendar-details-area" style="display: none;"></div>
+</main>
+
+<footer>
+    <p>&copy; 2026 グッズ管理アプリハル</p>
+</footer>
+
+<script>
+    let appData = { events: [] };
+    let currentDate = new Date(); // 現在表示しているカレンダーの年月
+
+    window.onload = function() {
+        // goods.html 側と同じLocalStorageからデータを読み込む
+        const saved = localStorage.getItem('eventGoodsSimpleAppData');
+        if (saved) appData = JSON.parse(saved);
+        renderCalendarBoard();
+    };
+
+    // 月の移動処理
+    function moveMonth(amount) {
+        currentDate.setMonth(currentDate.getMonth() + amount);
+        renderCalendarBoard();
+        document.getElementById('calendar-details-area').style.display = 'none'; // 詳細エリアを一旦隠す
+    }
+
+    // カレンダーのマス目を生成するメイン処理
+    function renderCalendarBoard() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        document.getElementById('calendar-title').textContent = `${year}年 ${month + 1}月`;
+
+        const board = document.getElementById('calendar-grid-board');
+        board.innerHTML = '';
+
+        // 曜日ヘッダーの生成
+        const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+        weekdays.forEach(d => {
+            const div = document.createElement('div');
+            div.className = 'weekday-label';
+            div.textContent = d;
+            board.appendChild(div);
+        });
+
+        const firstDayIndex = new Date(year, month, 1).getDay();
+        const lastDayDate = new Date(year, month + 1, 0).getDate();
+
+        // 1日より前の空白マスを埋める
+        for (let i = 0; i < firstDayIndex; i++) {
+            const div = document.createElement('div');
+            div.className = 'calendar-day empty';
+            board.appendChild(div);
+        }
+
+        // 日付マスを1日から順に生成
+        for (let day = 1; day <= lastDayDate; day++) {
+            const div = document.createElement('div');
+            div.className = 'calendar-day';
+            
+            // 判定用の日付文字列 (YYYY-MM-DD 形式)
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            div.innerHTML = `<span class="day-number">${day}</span>`;
+            
+            // 今日かどうかを判定して枠線を変える
+            const today = new Date();
+            const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            if (dateStr === todayStr) div.classList.add('today');
+
+            // この日付に登録されているイベントがあるか検索
+            const dayEvents = appData.events.filter(e => e.date === dateStr);
+            dayEvents.forEach(ev => {
+                const badge = document.createElement('div');
+                badge.className = 'event-badge';
+                badge.textContent = ev.name;
+                div.appendChild(badge);
+            });
+
+            // マスをクリックした時に下部にイベント内容を表示
+            div.onclick = function() { showDateEventsSummary(dateStr); };
+            board.appendChild(div);
+        }
+    }
+
+    // 【修正した⑤の仕様】細かい種類は省き、グッズ単体（シリーズ）の合計数と金額をバッと出す
+    function showDateEventsSummary(dateStr) {
+        const area = document.getElementById('calendar-details-area');
+        const dayEvents = appData.events.filter(e => e.date === dateStr);
+        
+        if (dayEvents.length === 0) {
+            area.innerHTML = `<p style="text-align:center; color:#759076; margin:0;">📅 ${dateStr} にはイベントが登録されていません。</p>`;
+            area.style.display = 'block';
+            return;
+        }
+
+        let html = `<h2 style="font-size: 1.3rem; margin-bottom: 15px;">📅 ${dateStr} のイベント内容一覧</h2>`;
+        
+        dayEvents.forEach(ev => {
+            let evMoney = 0;
+            // イベント内の全グッズの総合計金額を計算
+            ev.items.forEach(item => { 
+                item.variants.forEach(v => evMoney += item.price * v.quantity); 
+            });
+
+            html += `
+                <div class="event-header" style="margin-top: 15px; border-bottom: 2px solid #e3f2e8; padding-bottom: 8px;">
+                    <div><h3 style="margin:0;">🎉 ${ev.name}</h3></div>
+                    <div class="total-money" style="font-size: 1.1rem;">総額: ${evMoney.toLocaleString()} 円</div>
+                </div>
+                <div class="goods-grid" style="margin-top: 15px;">
+            `;
+
+            if (ev.items.length === 0) {
+                html += `<p style="color:#759076; padding:10px; grid-column:1/-1;">登録されたグッズがありません。</p>`;
+            } else {
+                ev.items.forEach(item => {
+                    let totalQty = 0;
+                    // 【修正ポイント】細かい種類ごとではなく、グッズ単体での合計個数を計算
+                    item.variants.forEach(v => totalQty += v.quantity);
+                    
+                    // カードの左側に表示するメイン写真（1枚目の写真）
+                    let displayImg = item.variants.length > 0 ? item.variants[0].image : 'https://placeholder.com';
+
+                    html += `
+                        <div class="goods-card ${totalQty > 0 ? 'owned' : ''}">
+                            <img src="${displayImg}" class="goods-img">
+                            <div class="goods-info">
+                                <p class="goods-name" style="font-size:1.05rem; margin-bottom: 5px;">${item.name}</p>
+                                <p class="goods-price">単価: ${item.price.toLocaleString()} 円</p>
+                                <p class="goods-total">小計: ${(item.price * totalQty).toLocaleString()} 円</p>
+                                <p style="margin-top:8px; font-weight:bold; color:#288b42; font-size:1.05rem;">📦 合計所持数: ${totalQty} 個</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            html += `</div>`;
+        });
+        
+        area.innerHTML = html;
+        area.style.display = 'block';
+    }
+</script>
+</body>
+</html>
